@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+		TO-DO LIST
+	</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.13/angular-animate.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="script.js"></script>
+	<style>
+		body
+		{
+			background-color: #230e4c;
+			margin-left: 45%;
+		}
+		.white
+		{
+			color:white;
+			font-size: 20px;
+		}
+		li
+		{
+			list-style-type: none;
+		}
+		button
+		{
+			border-radius: 20px;
+			border-style: none;
+		}
+	</style>
+</head>
+<body>
+	<h1 style="color: white;">TO DO LIST </h1>
+	<div ng-app="myTodoList" ng-controller="TheAdder">
+	    <table>
+	        <tr ng-repeat="x in products track by $index" class="fade">
+	        	<td><button ng-click="removeItem($index)">&times;</button></td>
+	        	<td><span class="white"> {{x}} </span></td>
+	        	<td><span class="white" ng-click="editItem($index)">&#9998;</span></td>
+	        	<td>
+	        		<div ng-show="boxShow">
+				        <input type="text" ng-model="alter">
+				        <span class="white" ng-click="saveItem($index,alter)">&#10004;</span>
+				        <span class="white" ng-click="cancelchange($index)"> &#10007; </span>
+				    </div>
+	        	</td> 
+	        </tr>	        
+	    </table>
+	    <br>
+	    <div>
+	    	<input ng-model="addMe">
+	    	<button ng-click="addItem()">Add</button>
+	    	<p ng-model="error" class="white"> {{error}}</p>
+	    </div>
+	</div>
+
+</body>
+</html>
